@@ -15,6 +15,6 @@ This is an android app sample which shows how to build simple Android app based 
 * [x] Includes Unit Tests
 
 ### Running Unit Tests
-* [x] Run --> Edit Configurations --> Android JUnit --> DoorDashUnitTest
-* [x] Set $MODULE_DIR$ in the Working Directory option
+* Run --> Edit Configurations --> Android JUnit --> DoorDashUnitTest
+* Set $MODULE_DIR$ in the Working Directory option
 
