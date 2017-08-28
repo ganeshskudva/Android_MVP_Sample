@@ -21,18 +21,20 @@ import com.example.gkudva.doordash.view.adapter.RestaurantAdapter;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements MainMvpView,SwipeRefreshLayout.OnRefreshListener {
 
-    private RecyclerView restaurantRecycleView;
     private MainPresenter presenter;
     private UpdatePresenter updatePresenter;
-    private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView.LayoutManager layoutManager;
-    private ProgressBar progressBar;
     private InfoMessage infoMessage;
-
-    public final static String LIST_STATE_KEY = "recycler_list_state";
     public Parcelable listState;
+
+    @BindView(R.id.rvRestaurants) RecyclerView restaurantRecycleView;
+    @BindView(R.id.swiperefresh) SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.progress) ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +47,12 @@ public class MainActivity extends AppCompatActivity implements MainMvpView,Swipe
         updatePresenter.attach(this);
 
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         infoMessage = new InfoMessage(this);
-        progressBar = (ProgressBar) findViewById(R.id.progress);
 
-        restaurantRecycleView = (RecyclerView) findViewById(R.id.rvRestaurants);
         setupRecyclerView(restaurantRecycleView);
 
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
         swipeRefreshLayout.setOnRefreshListener(this);
         presenter.loadRestaurants();
 
@@ -105,13 +105,13 @@ public class MainActivity extends AppCompatActivity implements MainMvpView,Swipe
     protected void onSaveInstanceState(Bundle state) {
         super.onSaveInstanceState(state);
         listState = layoutManager.onSaveInstanceState();
-        state.putParcelable(LIST_STATE_KEY, listState);
+        state.putParcelable(Constants.RV_LIST_STATE_KEY, listState);
     }
 
     protected void onRestoreInstanceState(Bundle state) {
         super.onRestoreInstanceState(state);
         if(state != null)
-            listState = state.getParcelable(LIST_STATE_KEY);
+            listState = state.getParcelable(Constants.RV_LIST_STATE_KEY);
     }
 
     @Override

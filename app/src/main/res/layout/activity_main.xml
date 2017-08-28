@@ -20,7 +20,9 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:gravity = "center_vertical|center_horizontal"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:scaleX="2"
+        android:scaleY="2"/>
     </RelativeLayout>
 
 

@@ -11,4 +11,6 @@ public class Constants {
 
     public static final String MAIN_PRESENTER_TAG = "MainPresenter";
 
+    public final static String RV_LIST_STATE_KEY = "recycler_list_state";
+
 }

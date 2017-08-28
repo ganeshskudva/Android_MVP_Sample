@@ -16,6 +16,9 @@ import com.squareup.picasso.Picasso;
 import java.util.Collections;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by gkudva on 25/08/17.
  */
@@ -57,11 +60,11 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
-        public TextView nameTextView;
-        public TextView statusTextView;
-        public TextView descriptionTextView;
-        public ImageView ivImageView;
-        public ImageButton ivBtnStar;
+        @BindView(R.id.tvName) TextView nameTextView;
+        @BindView(R.id.tvStatus) TextView statusTextView;
+        @BindView(R.id.tvDescription) TextView descriptionTextView;
+        @BindView(R.id.ivLogo) ImageView ivImageView;
+        @BindView(R.id.btnStar) ImageButton ivBtnStar;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -70,11 +73,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
             // to access the context from any ViewHolder instance.
             super(itemView);
 
-            nameTextView = (TextView) itemView.findViewById(R.id.tvName);
-            descriptionTextView = (TextView) itemView.findViewById(R.id.tvDescription);
-            statusTextView = (TextView) itemView.findViewById(R.id.tvStatus);
-            ivImageView = (ImageView) itemView.findViewById(R.id.ivLogo);
-            ivBtnStar = (ImageButton) itemView.findViewById(R.id.btnStar);
+            ButterKnife.bind(this, itemView);
         }
     }
 
